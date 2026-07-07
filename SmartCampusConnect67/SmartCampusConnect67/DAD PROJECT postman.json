@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "e41cf957-94c5-40c3-9176-02d66aee4dc1",
-    "name": "DAD PROJECT",
+    "_postman_id": "993a0ea2-00f1-491c-8b6a-59b0768073ac",
+    "name": "DAD PROJECT Copy",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "53703978",
-    "_collection_link": "https://go.postman.co/collection/53703978-e41cf957-94c5-40c3-9176-02d66aee4dc1?source=collection_link"
+    "_exporter_id": "53750888",
+    "_collection_link": "https://go.postman.co/collection/53750888-993a0ea2-00f1-491c-8b6a-59b0768073ac?source=collection_link"
   },
   "item": [
     {
@@ -1531,12 +1531,35 @@
             },
             {
               "name": "Post Reservation",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "const moment = require('moment');",
+                      "",
+                      "// Get current time and add 1 (to simmulate reserve for future)",
+                      "let startTime = moment().add(1, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Add 2 hours for the end time",
+                      "let endTime = moment().add(3, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Save them as variables",
+                      "pm.variables.set(\"startTime\", startTime);",
+                      "pm.variables.set(\"endTime\", endTime);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-03T10:00:00\",\n    \"endTime\": \"2026-07-03T12:00:00\"\n}",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"{{startTime}}\",\n    \"endTime\": \"{{endTime}}\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1554,35 +1577,35 @@
             },
             {
               "name": "Post Reservation (Overlapping)",
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-03T11:00:00\",\n    \"endTime\": \"2026-07-03T14:00:00\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "const moment = require('moment');",
+                      "",
+                      "// Get current time and add 1 (to simmulate reserve for future)",
+                      "let startTime = moment().add(2, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Add 2 hours for the end time",
+                      "let endTime = moment().add(4, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Save them as variables",
+                      "pm.variables.set(\"startTime\", startTime);",
+                      "pm.variables.set(\"endTime\", endTime);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
                   }
-                },
-                "url": {
-                  "raw": "{{Reservations_URL}}",
-                  "host": [
-                    "{{Reservations_URL}}"
-                  ]
                 }
-              },
-              "response": []
-            },
-            {
-              "name": "Post Reservation (Invalid Date Time, Start > End)",
+              ],
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-03T15:00:00\",\n    \"endTime\": \"2026-07-03T14:00:00\"\n}",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"{{startTime}}\", // overlapped with previous reservation\n    \"endTime\": \"{{endTime}}\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1605,7 +1628,53 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-01T11:00:00\",\n    \"endTime\": \"2026-07-01T14:00:00\"\n}",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-01T11:00:00\", // in the past\n    \"endTime\": \"2026-07-01T14:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation (Invalid Date Time, Start > End)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "const moment = require('moment');",
+                      "",
+                      "// Get current time and add 1 (to simmulate reserve for future)",
+                      "let startTime = moment().add(7, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Add 2 hours for the end time",
+                      "let endTime = moment().add(9, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Save them as variables",
+                      "pm.variables.set(\"startTime\", startTime);",
+                      "pm.variables.set(\"endTime\", endTime);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"{{endTime}}\", // start is after end\n    \"endTime\": \"{{startTime}}\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1623,12 +1692,103 @@
             },
             {
               "name": "Post Reservation (Invalid Student)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "const moment = require('moment');",
+                      "",
+                      "// Get current time and add 1 (to simmulate reserve for future)",
+                      "let startTime = moment().add(10, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Add 2 hours for the end time",
+                      "let endTime = moment().add(12, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Save them as variables",
+                      "pm.variables.set(\"startTime\", startTime);",
+                      "pm.variables.set(\"endTime\", endTime);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110567\",\n    \"startTime\": \"2026-07-08T11:00:00\",\n    \"endTime\": \"2026-07-08T14:00:00\"\n}",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110567\", // invalid student matric\n    \"startTime\": \"{{startTime}}\",\n    \"endTime\": \"{{endTime}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation (Invalid Room ID)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "const moment = require('moment');",
+                      "",
+                      "// Get current time and add 1 (to simmulate reserve for future)",
+                      "let startTime = moment().add(10, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Add 2 hours for the end time",
+                      "let endTime = moment().add(12, 'hours').format(\"YYYY-MM-DDTHH:mm:ss\");",
+                      "",
+                      "// Save them as variables",
+                      "pm.variables.set(\"startTime\", startTime);",
+                      "pm.variables.set(\"endTime\", endTime);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR999\", // invalid Room ID\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"{{startTime}}\",\n    \"endTime\": \"{{endTime}}\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1650,12 +1810,12 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{Reservations_URL}}/3",
+                  "raw": "{{Reservations_URL}}/2",
                   "host": [
                     "{{Reservations_URL}}"
                   ],
                   "path": [
-                    "3"
+                    "2"
                   ]
                 }
               },
@@ -1841,7 +2001,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser:addBook>\n            <book>\n                <isbn>9781234567890</isbn>\n                <title>Java Programming</title>\n                <availableCopies>-100</availableCopies>\n            </book>\n        </ser:addBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser:addBook>\n            <book>\n                <isbn>676767676767</isbn>\n                <title>Java Programming</title>\n                <availableCopies>-100</availableCopies>\n            </book>\n        </ser:addBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
                   "options": {
                     "raw": {
                       "language": "xml"
@@ -1870,7 +2030,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:updateBook>\n            <isbn>9781234567890</isbn>\n            <book>\n                <title>Why Hitler is right.</title>\n                <availableCopies>10</availableCopies>\n            </book>\n        </ser:updateBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:updateBook>\n            <isbn>9781234567890</isbn>\n            <book>\n                <title>Distributed Application Development</title>\n                <availableCopies>0</availableCopies>\n            </book>\n        </ser:updateBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
                   "options": {
                     "raw": {
                       "language": "xml"
@@ -1899,7 +2059,94 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:updateBook>\n            <isbn>9781234567890</isbn>\n            <book>\n                <title>Why Hitler is right.</title>\n                <availableCopies>10</availableCopies>\n            </book>\n        </ser:updateBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:updateBook>\n            <isbn>9781234567890</isbn>\n            <book>\n                <title>Distributed Application Development</title>\n                <availableCopies>-10</availableCopies>\n            </book>\n        </ser:updateBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Book Available",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:isBookAvailable>\n            <isbn>978-0134685991</isbn>\n        </ser:isBookAvailable>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Book Available (False / 0 available)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:isBookAvailable>\n            <isbn>9781234567890</isbn>\n        </ser:isBookAvailable>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Book Available (False / Negative)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:isBookAvailable>\n            <isbn>6767676767676767</isbn>\n        </ser:isBookAvailable>\n    </soapenv:Body>\n</soapenv:Envelope>",
                   "options": {
                     "raw": {
                       "language": "xml"
@@ -1975,64 +2222,6 @@
             },
             {
               "name": "SOAP Delete a book Invalid (Non-existing)",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "text/xml",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:deleteBook>\n            <isbn>9781234567890</isbn>\n        </ser:deleteBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
-                  "options": {
-                    "raw": {
-                      "language": "xml"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{Soap_URL}}",
-                  "host": [
-                    "{{Soap_URL}}"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "SOAP Book Available",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "text/xml",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:isBookAvailable>\n            <isbn>978-0134685991</isbn>\n        </ser:isBookAvailable>\n    </soapenv:Body>\n</soapenv:Envelope>",
-                  "options": {
-                    "raw": {
-                      "language": "xml"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{Soap_URL}}",
-                  "host": [
-                    "{{Soap_URL}}"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "SOAP Book Available (Negative)",
               "request": {
                 "method": "POST",
                 "header": [
