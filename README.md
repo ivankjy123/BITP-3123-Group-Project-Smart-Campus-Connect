@@ -65,3 +65,4 @@ Select and upload the "DAD PROJECT postman.json" file located in the project rep
 Once imported, you will see the "DAD PROJECT" collection in your sidebar, categorized by microservice.
 
 Environment variables (e.g., {{STUDENT_SERVICE_URL}}) are securely pre-configured inside the collection. Simply open any folder and click "Send" to test the live services running on your localhost ports.
+
