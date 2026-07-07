@@ -14,7 +14,7 @@ This project is a distributed microservices backend platform designed to deliver
 ## 1. Tools & Prerequisites
 
 To develop, run, and test this project, ensure you have the following tools installed:
-*   [Java Development Kit (JDK) 21](https://adoptium.net/)
+*   [Java Development Kit (JDK) 26](https://adoptium.net/)
 *   **XAMPP** (or a standalone MySQL Server) for database hosting
 *   **IntelliJ IDEA** or **VS Code** (IDE for Java/Spring Boot development)
 *   **Postman** (For API testing and executing the demonstration collection)
