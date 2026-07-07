@@ -4,7 +4,7 @@ This project is a distributed microservices backend platform designed to deliver
 
 ### Functions and Modules Available
 *   **Student Profile Service (Port 8081):** Manages student demographic data and academic records via CRUD operations over REST.
-*   **Course Enrolment Service (Port 8082):** Handles semester course enrollments, drop/add requests, and capacity checks. Depends on the Student Profile Service for verification.
+*   **Course Enrolment Service (Port 8082):** Handles semester course enrollments, drop/add requests, capacity checks, and constraint check (if academic data exists, delete is prohibited). Depends on the Student Profile Service for verification.
 *   **Notification Service (Port 8083):** Asynchronously consumes and logs events triggered by other services (e.g., successful enrollment alerts).
 *   **Library / Booking Service (Ports 8084 & 9091):** Manages physical discussion room reservations (REST) and exposes book catalog operations via a legacy SOAP/WSDL interface.
 *   **Reporting / Analytics Service (Port 8085):** Produces aggregated dashboard views and metrics by reading data across the distributed domains.
@@ -54,6 +54,7 @@ cd notification-service && .\mvnw clean spring-boot:run
 
 # Terminal 5
 cd reporting-service && .\mvnw clean spring-boot:run
+```
 
 ## 4. API Testing & Demonstration (Postman)
 Open Postman.
@@ -66,3 +67,33 @@ Once imported, you will see the "DAD PROJECT" collection in your sidebar, catego
 
 Environment variables (e.g., {{STUDENT_SERVICE_URL}}) are securely pre-configured inside the collection. Simply open any folder and click "Send" to test the live services running on your localhost ports.
 
+## 5. Architectural Specifications
+The SmartCampus Connect platform addresses the distributed system goals as below.
+* **Location Transparency**: Users interact with logical URL endpoints via Postman. The client remain oblivious to where the actual data stores.
+* **Access Transparency**: The application handles the underlying communication protocols uniformly on frontend (Postman).
+* **Concurrency Transparency**: Multiple services can update records concurrently. For example, users changing their student profile does not interfere with enrolment service.
+* **Failure Handling**: The system uses custom error message to handle every failures, such as services offline or exception while interacting with REST or SOAP.
+
+## 6. Architectural Pattern Selection
+The ecosystem implements a hybrid **Multi-Tier Client-Server Architecture** with Distributed Components, combined with a **Master-Slave / Shared-Read pattern** inside the Reporting engine.
+ * **Zero Coupling**: Each service has its own database schema.
+ * **Scaling**: Each service is scalable horizontally.
+ * **Fault Tolerance**: The faults are isolated via the Network Boumdaries.
+ * **Loose Coupling**: State transitions occur over explicit HTTP boundaries; direct schema manipulation across services is blocked.
+ * **Interoperability**: JSON endpoints interact directly with legacy JAX-WS XML setups.
+ * **Strict Data Ownership**: Each service communicates exclusively with its declared database schema (db_student_profile, db_course_enrolment, etc.). Sharing tables across domains is forbidden.
+ * **Integration of various techniques**: Each service uses different type of technique.
+   
+    | Service | Technique/Architecture Used|
+    | --- | --- |
+    | Student Profile Service | REST, Spring Boot |
+    | Course Enrolment Service | REST, Spring Boot, Load test with SQL script simulation |
+    | Notification Service | Raw TCP Socket / Producer-Consumer, REST, Spring Boot |
+    | Library Service | Legacy SOAP and WSDL, REST, Spring Boot |
+    | Reporting Service | Spring Boot, REST, Data Aggregation |
+## Authors
+
+- [@ivankjy123](https://github.com/ivankjy123)
+- [@Hew04](https://github.com/Hew04)
+- [@kkoklianglaw-hub](https://github.com/kkoklianglaw-hub)
+- [@mpp0719](https://github.com/mpp0719)
