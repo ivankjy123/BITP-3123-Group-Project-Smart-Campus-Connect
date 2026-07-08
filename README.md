@@ -2,6 +2,8 @@
 
 This project is a distributed microservices backend platform designed to deliver and manage core university campus services. Built using Spring Boot and Java 26, the system relies on independently deployable services that manage their own isolated databases, communicating via RESTful APIs, SOAP, and asynchronous messaging workflows.
 
+Below is the link to the demonstration video: https://youtu.be/zjhbY5CMtoQ?si=rAu-xeugKrjcUPM-
+
 ### Functions and Modules Available
 *   **Student Profile Service (Port 8081):** Manages student demographic data and academic records via CRUD operations over REST.
 *   **Course Enrolment Service (Port 8082):** Handles semester course enrollments, drop/add requests, capacity checks, and constraint check (if academic data exists, delete is prohibited). Depends on the Student Profile Service for verification.
