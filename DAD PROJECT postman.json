@@ -1,0 +1,2580 @@
+{
+  "info": {
+    "_postman_id": "e41cf957-94c5-40c3-9176-02d66aee4dc1",
+    "name": "DAD PROJECT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53703978",
+    "_collection_link": "https://go.postman.co/collection/53703978-e41cf957-94c5-40c3-9176-02d66aee4dc1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "enrolment-services",
+      "item": [
+        {
+          "name": "Enrolments",
+          "item": [
+            {
+              "name": "GET - Get All Enrolment",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get Enrolment by matricno",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}/students/B032410569",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get Enrolment by matricno (Student not exist)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}/students/B99999999",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B99999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Enrolment",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"studentMatricNo\": \"B032410569\",\r\n    \"courseCode\": \"BB6969\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Enrolment Duplicate in same semester",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"studentMatricNo\": \"B032410569\",\r\n    \"courseCode\": \"BB6969\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Enrolment Student not exist",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"studentMatricNo\": \"B099999999\",\r\n    \"courseCode\": \"BB6969\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Enrolment Course not exist",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"studentMatricNo\": \"B032410569\",\r\n    \"courseCode\": \"PP9999\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Enrolment",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}/students/B032410569/courses/BB6969",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "courses",
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Enrolment Repeat deleting",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}/students/B032410569/courses/BB6969",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "courses",
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Enrolment Student not exist",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}/students/B099999999/courses/BB6969",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B099999999",
+                    "courses",
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Enrolment Course not exist/not enrolled",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_SERVICE_URL}}/students/B032410569/courses/PP9999",
+                  "host": [
+                    "{{ENROLMENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "courses",
+                    "PP9999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Courses",
+          "item": [
+            {
+              "name": "GET - Get All courses",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get Course by courseCode",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BB6969",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get Course by courseCode (course not exist)",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/PP9999",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "PP9999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Add Course",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseCode\": \"BITP3123\",\r\n        \"courseName\": \"Distributed Application Development\",\r\n        \"currentEnrolled\": 10,\r\n        \"maxCapacity\": 40\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Add Course Duplicate",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseCode\": \"BITP3123\",\r\n        \"courseName\": \"Distributed Application Development\",\r\n        \"currentEnrolled\": 10,\r\n        \"maxCapacity\": 40\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Add Course but 0 max capacity",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseCode\": \"BITP3133\",\r\n        \"courseName\": \"Web Application Development\",\r\n        \"currentEnrolled\": 10,\r\n        \"maxCapacity\": 0\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Course",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseName\": \"TEST\",\r\n        \"maxCapacity\": 20\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BB6969",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Course but update currentEnrolled",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseName\": \"TEST\",\r\n        \"currentEnrolled\": 20,\r\n        \"maxCapacity\": 20\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BB6969",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Course but invalid courseCode",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseName\": \"TEST\",\r\n        \"maxCapacity\": 20\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/PP9999",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "PP9999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Course but maxCapacity < currentEnrolled",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"courseName\": \"TEST\",\r\n        \"maxCapacity\": 0\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BB6969",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Course",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BITP3123",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BITP3123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Course Dup]licated",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BITP3123",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BITP3123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Course but invalid courseCode",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/PP9999",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "PP9999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Course but course is enrolled",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{ENROLMENT_COURSE_SERVICE_URL}}/BB6969",
+                  "host": [
+                    "{{ENROLMENT_COURSE_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "BB6969"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "student-service",
+      "item": [
+        {
+          "name": "AcademicRecord",
+          "item": [
+            {
+              "name": "GET - Get Academic Record by student",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032110015",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032110015"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get Academic Record by student but student not exist",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B9999999999",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B9999999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create Academic Record",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 15.0,\r\n        \"courseCode\": \"BITP2123\",\r\n        \"finalExamMarks\": 30.0,\r\n        \"labTestMarks\": 15.0,\r\n        \"midtermMarks\": 12.0,\r\n        \"studentMatricNo\": \"B032410569\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create Academic Record Duplicate",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 15.0,\r\n        \"courseCode\": \"BITP2123\",\r\n        \"finalExamMarks\": 30.0,\r\n        \"labTestMarks\": 15.0,\r\n        \"midtermMarks\": 12.0,\r\n        \"studentMatricNo\": \"B032410569\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create Academic Record but student not exist",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 15.0,\r\n        \"courseCode\": \"BITP2123\",\r\n        \"finalExamMarks\": 30.0,\r\n        \"labTestMarks\": 15.0,\r\n        \"midtermMarks\": 12.0,\r\n        \"studentMatricNo\": \"B099999999\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create Academic Record but enrolment invalid",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 15.0,\r\n        \"courseCode\": \"SEC4113\",\r\n        \"finalExamMarks\": 30.0,\r\n        \"labTestMarks\": 15.0,\r\n        \"midtermMarks\": 12.0,\r\n        \"studentMatricNo\": \"B032410569\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Academic Record",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032410569/course/BITP2123",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "course",
+                    "BITP2123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Academic Record but record not exist",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032410569/course/PP9999",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "course",
+                    "PP9999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Academic Record empty body (no change)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032410569/course/BITP2123",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "course",
+                    "BITP2123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Academic Record but student not exist",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B999999999/course/BITP2123",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B999999999",
+                    "course",
+                    "BITP2123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Academic Record",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}"
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032410569/course/BITP2123",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "course",
+                    "BITP2123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Academic Record duplicate",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}"
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032410569/course/BITP2123",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "course",
+                    "BITP2123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Academic Record but student not exist",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}"
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B99999999/course/BITP2123",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B99999999",
+                    "course",
+                    "BITP2123"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Academic Record but record not exist",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"assessmentMarks\": 9.0,\r\n        \"finalExamMarks\": 9.0,\r\n        \"labTestMarks\": 9,\r\n        \"midtermMarks\": 9.0\r\n}"
+                },
+                "url": {
+                  "raw": "{{ACADEMIC_RECORD_URL}}/students/B032410569/course/PP9999",
+                  "host": [
+                    "{{ACADEMIC_RECORD_URL}}"
+                  ],
+                  "path": [
+                    "students",
+                    "B032410569",
+                    "course",
+                    "PP9999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Student",
+          "item": [
+            {
+              "name": "GET - Get All Students",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get One Student by matricno",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B032410569",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B032410569"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET - Get One Student by matricno but student not exist",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B999999999",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B999999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Student",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"test\",\r\n    \"fullName\": \"test\",\r\n    \"programme\": \"BAXZ\",\r\n    \"status\": \"ACTIVE\",\r\n    \"studentMatricNo\": \"B032412345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Student duplicate",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"test\",\r\n    \"fullName\": \"test\",\r\n    \"programme\": \"BAXZ\",\r\n    \"status\": \"ACTIVE\",\r\n    \"studentMatricNo\": \"B032412345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Student no matricNo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"test\",\r\n    \"fullName\": \"test\",\r\n    \"programme\": \"BAXZ\",\r\n    \"status\": \"ACTIVE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST - Create New Student but email existed",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"test\",\r\n    \"fullName\": \"test\",\r\n    \"programme\": \"BAXZ\",\r\n    \"status\": \"ACTIVE\",\r\n    \"studentMatricNo\": \"B032412388\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Student",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"heilhitler\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B032412345",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B032412345"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Student but use existed email",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"pp@student.edu.my\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B032412345",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B032412345"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Student but student not existed",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"heilhitler\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B99999999",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B99999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT - Update Student but invalid field name",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"lastNameballabdladabda\": \"heilhitler\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B032412345",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B032412345"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Student",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B032412345",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B032412345"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Student duplicated",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B032412345",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B032412345"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE - Delete Student but student not existed",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{STUDENT_SERVICE_URL}}/B999999999",
+                  "host": [
+                    "{{STUDENT_SERVICE_URL}}"
+                  ],
+                  "path": [
+                    "B999999999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "library-service",
+      "item": [
+        {
+          "name": "Room",
+          "item": [
+            {
+              "name": "Get All Rooms",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Room_URL}}",
+                  "host": [
+                    "{{Room_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get One Room",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Room_URL}}/DR001",
+                  "host": [
+                    "{{Room_URL}}"
+                  ],
+                  "path": [
+                    "DR001"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get One Room (Negative)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Room_URL}}/DR010",
+                  "host": [
+                    "{{Room_URL}}"
+                  ],
+                  "path": [
+                    "DR010"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Add Room",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR003\",\n    \"roomType\": \"Discussion Room\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Room_URL}}",
+                  "host": [
+                    "{{Room_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Add Room (Existing Room ID)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR003\",\n    \"roomType\": \"Discussion Room\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Room_URL}}",
+                  "host": [
+                    "{{Room_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put Update Room",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR004\",\n    \"roomType\": \"Computer Room\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Room_URL}}/DR003",
+                  "host": [
+                    "{{Room_URL}}"
+                  ],
+                  "path": [
+                    "DR003"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put Update Room (Existing Room ID)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"roomType\": \"Computer Room\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Room_URL}}/DR004",
+                  "host": [
+                    "{{Room_URL}}"
+                  ],
+                  "path": [
+                    "DR004"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Room",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{Room_URL}}/DR004",
+                  "host": [
+                    "{{Room_URL}}"
+                  ],
+                  "path": [
+                    "DR004"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Room (Non-existing Room)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{Room_URL}}/DR004",
+                  "host": [
+                    "{{Room_URL}}"
+                  ],
+                  "path": [
+                    "DR004"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Reservation",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get one Reservation",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/1",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get one Reservation (Negative)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/100",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "100"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Reservation by room id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/room/DR001",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "room",
+                    "DR001"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Reservation by room id (Non-Existing Room)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/room/DR010",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "room",
+                    "DR010"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Reservation by Student Matric",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/student/B032110015",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "student",
+                    "B032110015"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Reservation by Student Matric (No Reservation) (Empty Body)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/student/B032410569",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "student",
+                    "B032410569"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Reservation by Student Matric (Non-existing Student)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/student/B032110567",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "student",
+                    "B032110567"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-03T10:00:00\",\n    \"endTime\": \"2026-07-03T12:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation (Overlapping)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-03T11:00:00\",\n    \"endTime\": \"2026-07-03T14:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation (Invalid Date Time, Start > End)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-03T15:00:00\",\n    \"endTime\": \"2026-07-03T14:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation (Invalid Date Time, Past)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110015\",\n    \"startTime\": \"2026-07-01T11:00:00\",\n    \"endTime\": \"2026-07-01T14:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Post Reservation (Invalid Student)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"roomId\": \"DR001\",\n    \"studentMatricNo\": \"B032110567\",\n    \"startTime\": \"2026-07-08T11:00:00\",\n    \"endTime\": \"2026-07-08T14:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Reservations_URL}}",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Reservation",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/3",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Reservation (Negative)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{Reservations_URL}}/3",
+                  "host": [
+                    "{{Reservations_URL}}"
+                  ],
+                  "path": [
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Book",
+          "item": [
+            {
+              "name": "SOAP Get All",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser:getAllBooks/>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Get One Book",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n<soapenv:Body>\n    <ser:getBookByIsbn>\n        <isbn>978-0134685991</isbn>\n    </ser:getBookByIsbn>\n</soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Get One Book (Non-existing)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n<soapenv:Body>\n    <ser:getBookByIsbn>\n        <isbn>67</isbn>\n    </ser:getBookByIsbn>\n</soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Add One Book",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser:addBook>\n            <book>\n                <isbn>9781234567890</isbn>\n                <title>Java Programming</title>\n                <availableCopies>5</availableCopies>\n            </book>\n        </ser:addBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Add One Book (Duplicated isbn)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser:addBook>\n            <book>\n                <isbn>978-0134685991</isbn>\n                <title>Java Programming</title>\n                <availableCopies>5</availableCopies>\n            </book>\n        </ser:addBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Add One Book (Negative Volume)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser:addBook>\n            <book>\n                <isbn>9781234567890</isbn>\n                <title>Java Programming</title>\n                <availableCopies>-100</availableCopies>\n            </book>\n        </ser:addBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Update Book",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:updateBook>\n            <isbn>9781234567890</isbn>\n            <book>\n                <title>Why Hitler is right.</title>\n                <availableCopies>10</availableCopies>\n            </book>\n        </ser:updateBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Update Book (Negative Volume)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:updateBook>\n            <isbn>9781234567890</isbn>\n            <book>\n                <title>Why Hitler is right.</title>\n                <availableCopies>10</availableCopies>\n            </book>\n        </ser:updateBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Delete a book",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:deleteBook>\n            <isbn>9781234567890</isbn>\n        </ser:deleteBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Delete a book Invalid (Borrowed Book)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:deleteBook>\n            <isbn>978-0134685991</isbn>\n        </ser:deleteBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Delete a book Invalid (Non-existing)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:deleteBook>\n            <isbn>9781234567890</isbn>\n        </ser:deleteBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Book Available",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:isBookAvailable>\n            <isbn>978-0134685991</isbn>\n        </ser:isBookAvailable>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SOAP Book Available (Negative)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\"?>\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n    xmlns:ser=\"http://soap.library_service.smartcampusconnect67.my/\">\n    <soapenv:Body>\n        <ser:deleteBook>\n            <isbn>9781234567890</isbn>\n        </ser:deleteBook>\n    </soapenv:Body>\n</soapenv:Envelope>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Soap_URL}}",
+                  "host": [
+                    "{{Soap_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET All loans",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Loan_URL}}",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Loans By Student",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Loan_URL}}/student/B032110015",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "path": [
+                    "student",
+                    "B032110015"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Loans By Student (Negative) (Empty Body)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{Loan_URL}}/student/B032110011",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "path": [
+                    "student",
+                    "B032110011"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Create Loan",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}?studentMatricNo=B032110015&isbn=978-1492031081",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "studentMatricNo",
+                      "value": "B032110015"
+                    },
+                    {
+                      "key": "isbn",
+                      "value": "978-1492031081"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Create Loan (No Available Book)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}?studentMatricNo=B032110015&isbn=978-1492031081",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "studentMatricNo",
+                      "value": "B032110015"
+                    },
+                    {
+                      "key": "isbn",
+                      "value": "978-1492031081"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Create Loan (Invalid Student)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}?studentMatricNo=B1010101010&isbn=978-0134685991",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "studentMatricNo",
+                      "value": "B1010101010"
+                    },
+                    {
+                      "key": "isbn",
+                      "value": "978-0134685991"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Create Loan (Invalid Book)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}?studentMatricNo=B032110015&isbn=676-76767676767",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "studentMatricNo",
+                      "value": "B032110015"
+                    },
+                    {
+                      "key": "isbn",
+                      "value": "676-76767676767"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put Return Loan",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}/2/return",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "path": [
+                    "2",
+                    "return"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put Return Loan Copy (Return a Returned Book)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}/2/return",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "path": [
+                    "2",
+                    "return"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put Return Loan Copy (Return Non-existing Loans ID)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{Loan_URL}}/100/return",
+                  "host": [
+                    "{{Loan_URL}}"
+                  ],
+                  "path": [
+                    "100",
+                    "return"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "notification-service",
+      "item": [
+        {
+          "name": "Notification State",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Notification_State_URL}}/counts",
+              "host": [
+                "{{Notification_State_URL}}"
+              ],
+              "path": [
+                "counts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Notification All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Notification_DB_URL}}",
+              "host": [
+                "{{Notification_DB_URL}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Notification By Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Notification_DB_URL}}/type/ENROLMENT_SUCCESS",
+              "host": [
+                "{{Notification_DB_URL}}"
+              ],
+              "path": [
+                "type",
+                "ENROLMENT_SUCCESS"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Notification By Email",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Notification_DB_URL}}/email/faiz@student.edu.my",
+              "host": [
+                "{{Notification_DB_URL}}"
+              ],
+              "path": [
+                "email",
+                "faiz@student.edu.my"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "reporting-service",
+      "item": [
+        {
+          "name": "GET - Get Dashboard Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{REPORTING_SERVICE_URL}}/api/reports/dashboard",
+              "host": [
+                "{{REPORTING_SERVICE_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Get All Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/reports/metrics",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8085",
+              "path": [
+                "api",
+                "reports",
+                "metrics"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Get Programme Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/reports/programmes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8085",
+              "path": [
+                "api",
+                "reports",
+                "programmes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Refresh Dashboard Metrics",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/reports/refresh",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8085",
+              "path": [
+                "api",
+                "reports",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "ACADEMIC_RECORD_URL",
+      "value": "http://localhost:8081/api/academic-records"
+    },
+    {
+      "key": "ENROLMENT_SERVICE_URL",
+      "value": "http://localhost:8082/api/enrolments"
+    },
+    {
+      "key": "STUDENT_SERVICE_URL",
+      "value": "http://localhost:8081/api/students"
+    },
+    {
+      "key": "LIBRARY_ROOM_SERVICE_URL",
+      "value": "http://localhost:8084/api/rooms"
+    },
+    {
+      "key": "SOAP_LIBRARY_BOOK_SERVICE_URL",
+      "value": "http://localhost:9091/ws/library"
+    },
+    {
+      "key": "ENROLMENT_COURSE_SERVICE_URL",
+      "value": "http://localhost:8082/api/enrolments/courses"
+    },
+    {
+      "key": "Student_URL",
+      "value": "http://localhost:8081/api/students"
+    },
+    {
+      "key": "Soap_URL",
+      "value": "http://localhost:9091/ws/library"
+    },
+    {
+      "key": "Room_URL",
+      "value": "http://localhost:8084/api/rooms"
+    },
+    {
+      "key": "Reservations_URL",
+      "value": "http://localhost:8084/api/rooms/reservations"
+    },
+    {
+      "key": "Notification_State_URL",
+      "value": "http://localhost:8083/api/stats"
+    },
+    {
+      "key": "Notification_DB_URL",
+      "value": "http://localhost:8083/api/notifications"
+    },
+    {
+      "key": "Loan_URL",
+      "value": "http://localhost:8084/api/loans"
+    },
+    {
+      "key": "Enroll_URL",
+      "value": "http://localhost:8082/api/enrolments"
+    },
+    {
+      "key": "Acedemic_URL",
+      "value": "http://localhost:8081/api/academic-records"
+    },
+    {
+      "key": "REPORTING_SERVICE_URL",
+      "value": "http://localhost:8085"
+    }
+  ]
+}

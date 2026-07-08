@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WorkspaceSettings">
+    <project name="enrolment-service" path="$PROJECT_DIR$/enrolment-service" />
+    <project name="library-service" path="$PROJECT_DIR$/library-service" />
+    <project name="notification-service" path="$PROJECT_DIR$/notification-service" />
+    <project name="student-service" path="$PROJECT_DIR$/student-service" />
+    <project name="reporting-service" path="$PROJECT_DIR$/reporting-service" />
+    <option name="workspace" value="true" />
+  </component>
+</project>
