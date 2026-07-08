@@ -229,7 +229,7 @@ Click the "Import" button located in the top-left corner of the workspace.
 
 Select and upload the "DAD PROJECT postman.json" file located in the project repository.
 
-Once imported, you will see the "DAD PROJECT" collection in your sidebar, categorized by microservice.
+Once imported, you will see the "DAD PROJECT" collection in the sidebar, categorized by microservice.
 
 Environment variables (e.g., {{STUDENT_SERVICE_URL}}) are securely pre-configured inside the collection. Simply open any folder and click "Send" to test the live services running on your localhost ports.
 
@@ -297,3 +297,5 @@ src/main/java/my/smartcampusconnect67/<service_name>/
 - [@Hew04](https://github.com/Hew04)
 - [@kkoklianglaw-hub](https://github.com/kkoklianglaw-hub)
 - [@mpp0719](https://github.com/mpp0719)
+- [@MingHeng873](https://github.com/Mingheng873)
+
